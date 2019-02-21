@@ -53,18 +53,18 @@ void setup()
 void loop()
 {
   
-  _radioData.waterLevel++;
-  if (_radioData.waterLevel > 3)
-    _radioData.waterLevel = 0;
-  
-//  if(rdL1() == 0)
+//  _radioData.waterLevel++;
+//  if (_radioData.waterLevel > 3)
 //    _radioData.waterLevel = 0;
-//  if(rdL1() == 1)
-//    _radioData.waterLevel = 1;
-//  if(rdL1() == 1 && rdL2() == 1)
-//    _radioData.waterLevel = 2;
-//  if(rdL1() == 1 && rdL2() == 1 && rdL3() == 1)
-//    _radioData.waterLevel = 3;
+  
+  if(rdL1() == 0)
+    _radioData.waterLevel = 0;
+  if(rdL1() == 1)
+    _radioData.waterLevel = 1;
+  if(rdL1() == 1 && rdL2() == 1)
+    _radioData.waterLevel = 2;
+  if(rdL1() == 1 && rdL2() == 1 && rdL3() == 1)
+    _radioData.waterLevel = 3;
   if (_radio.send(DESTINATION_RADIO_ID, &_radioData, sizeof(_radioData))) // Note how '&' must be placed in front of the variable name.
     Serial.println(F("...Success"));
   else
